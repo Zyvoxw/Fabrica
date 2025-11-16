@@ -108,9 +108,10 @@ void registrarTiempoProcesos(char nombreProductos[][50],char nombreRecursos[][50
             printf(" %s: %d\n", nombreRecursos[j], recursosNecesarios[i][j]);
         }
 
-        printf("Tiempo de fabricación: %d minutos\n", tiempoProducto[i]);
+        printf("Tiempo de fabricacion: %d minutos\n", tiempoProducto[i]);
     }
 }
+
 
 
 
