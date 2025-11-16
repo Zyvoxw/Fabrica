@@ -2,11 +2,12 @@
 #include <string.h>
 #include "Funciones.h"
 
-void ingresarProductoRecursos(char productos[5][50], int cantidadesProductos[5], int *numProductos, char recursos[45][50], int disponibles[45], int *numRecursos){
+void ingresarProductoRecursos(char productos[5][50], int cantidadesProductos[5], int *numProductos, char recursos[100][50], int disponibles[100], int *numRecursos){
     *numProductos = 0;
     *numRecursos = 0;
     char opc;
-
+    int cantidad;
+    
     do {
         printf("------- INGRESO DE PRODUCTOS -------\n");
         printf("Nombre del producto %d:\n", *numProductos + 1);
@@ -21,44 +22,45 @@ void ingresarProductoRecursos(char productos[5][50], int cantidadesProductos[5],
 
         printf("Desea ingresar otro producto?(s/n): ");
         scanf(" %c", &opc);
-        while (getchar() != '\n');
+        while (getchar() != '\n'); 
 
     } while (opc == 's' || opc == 'S');
 
-do {
-    printf("----- INGRESO DE RECURSOS -----\n");
-    printf("Nombre del recurso %d:\n", *numRecursos + 1);
-    fgets(recursos[*numRecursos], 50, stdin);
-    int len = strlen(recursos[*numRecursos]);
-    if (len > 0 && recursos[*numRecursos][len - 1] == '\n') {
-        recursos[*numRecursos][len - 1] = '\0';
-    }
-
     
-
     do {
-        int cantidad; //DUDADAR
-        
-        printf("Cantidad disponible de %s:\n", recursos[*numRecursos]);
-        scanf("%d", &cantidad);
-        while (getchar() != '\n'); 
-
-        if (cantidad < 0) {
-            printf("Cantidad inválida. Debe ser 0 o mayor.\n");
+        printf("----- INGRESO DE RECURSOS -----\n");
+        printf("Nombre del recurso %d:\n", *numRecursos + 1);
+        fgets(recursos[*numRecursos], 50, stdin);
+        int len = strlen(recursos[*numRecursos]);
+        if (len > 0 && recursos[*numRecursos][len - 1] == '\n') {
+            recursos[*numRecursos][len - 1] = '\0';
         }
-    } while (cantidad < 0);
+            int num;
+            
+        do {
+            int num;
 
-    disponibles[*numRecursos] = cantidad;
+            printf("Cantidad disponible de %s (>=0): ", recursos[*numRecursos]);
+            scanf("%d", &num);
+            while (getchar() != '\n');  
 
-    (*numRecursos)++;
-    if (*numRecursos >= 100) break;
+            if (num < 0) {
+                printf("Cantidad inválida. Debe ser 0 o mayor.\n");
+            }
+        } while (num < 0);
 
-    printf("Desea ingresar otro recurso?(s/n): ");
-    char opc;
-    scanf(" %c", &opc);
-    while (getchar() != '\n');
+        disponibles[*numRecursos] = num;
 
-} while (opc == 's' || opc == 'S');
+        (*numRecursos)++;
+
+        if (*numRecursos >= 100) 
+        break;
+
+        printf("Desea ingresar otro recurso?(s/n): ");
+        scanf(" %c", &opc);
+        while (getchar() != '\n');
+
+    } while (opc == 's' || opc == 'S');
 
     printf("------- PRODUCTOS INGRESADOS -------\n");
     for (int i = 0; i < *numProductos; i++) {
@@ -70,7 +72,6 @@ do {
         printf("%d - %s - cantidad disponible: %d\n", i + 1, recursos[i], disponibles[i]);
     }
 }
-
 
 void registrarTiempoProcesos(char nombreProductos[][50],char nombreRecursos[][50],int *numProductos,int *numRecursos,int recursosNecesarios[][5], int tiempoProducto[])
 {
@@ -106,6 +107,7 @@ void registrarTiempoProcesos(char nombreProductos[][50],char nombreRecursos[][50
         tiempoProducto[i] = tiempo;         
     }
 }
+
 
 
 
