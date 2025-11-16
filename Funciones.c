@@ -2,48 +2,59 @@
 #include <string.h>
 #include "Funciones.h"
 
-void ingresarProductosYRecursos(char productos[5][50], int *numProductos, char recursos[100][50], int disponibles[100], int *numRecursos)
-{
-    char opc;
-    *numProductos = 0;
-    *numRecursos = 0;
-
-    printf("¿Cuántos productos desea ingresar? (1-5): ");
-    scanf("%d", numProductos);
-    fgets(productos[0], 50, stdin);
-
-    printf("------Ingreso de productos------\n");
-
-    for (int i = 0; i < *numProductos; i++) {
-
-        printf("Nombre del producto %d:\n", i + 1);
-        fgets(productos[i], 50, stdin);
-        int len = strlen(productos[i]) - 1;
-        productos[i][len] = '\0';
-    }
-
-    printf("--------Ingreso de recursos-------\n");
-
-    do {
-
-        printf("Nombre del recurso %d: ", *numRecursos + 1);
-
-        fgets(recursos[*numRecursos], 50, stdin);
-        int len = strlen(recursos[*numRecursos]) - 1;
-        recursos[*numRecursos][len] = '\0';
-
-        printf("Cantidad disponible de %s: ", recursos[*numRecursos]);
-        scanf("%d", &disponibles[*numRecursos]);
-        fgets(recursos[*numRecursos], 50, stdin);
-
-        (*numRecursos)++;
-
-        printf("¿Desea ingresar otro recurso? (s/n): ");
-        scanf(" %c", &opc);
-
-    } while ((opc == 's' || opc == 'S') && *numRecursos < 100);
-
-    printf("\nProductos y recursos ingresados correctamente.\n");
+void leerCadena(char *cadena, int n){
+    fgets(cadena, n, stdin);
+    int len = strlen(cadena)-1;
+    cadena[len]='\0';
 }
 
+void ingresarProductoRecursos(char productos[5][50], int *numProductos, int *numRecursos, int disponibles[100], char recursos[100][50]){
 
+    *numProductos=0;
+    *numRecursos=0;
+    char opc;
+
+do {
+    printf("-------INGRESO DE PRODUCTOS------\n");
+    printf("Nombre del producto %d:\n", *numProductos + 1);
+    leerCadena(productos[*numProductos], 50);
+    (*numProductos)++;
+
+
+    printf("Desea ingresar otro producto?(s/n): ");
+    scanf(" %c", &opc);
+    
+    if(*numProductos >= 5) 
+    break;
+
+} while(opc == 's' || opc == 'S');
+do{
+    printf("-----INGRESO DE RECURSOS-----\n");
+    printf("Nombre del recurso %d:\n", *numRecursos + 1);
+    leerCadena(recursos[*numRecursos], 50);
+
+    printf("Cantidad disponible de %s:\n", recursos[*numRecursos]);
+    scanf("%d", &disponibles[*numRecursos]);
+
+    (*numRecursos)++;
+
+    if(*numRecursos >= 100)
+    break;
+
+    printf("Desea ingresar otro recurso?(s/n)");
+    leerCadena(&opc, 2);
+
+}while(opc == 's' || opc == 'S');
+
+        printf("-------PRODUCTOS INGRESADOS------\n");
+        for(int i = 0; i < *numProductos; i++){
+        printf("\t%d\n-\t%s\n", i + 1, productos[i]);
+
+    }
+
+        printf("-------RECURSOS INGRESADOS------\n");
+        for(int i = 0; i < *numRecursos; i++){
+        printf("\t%d\n-\t%s\n-\tcantidad disponible: %d\n", i + 1, recursos[i], disponibles[i]);
+
+    }
+}
