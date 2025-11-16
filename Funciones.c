@@ -2,7 +2,7 @@
 #include <string.h>
 #include "Funciones.h"
 
-void ingresarProductoRecursos(char productos[5][50], int cantidadesProductos[5], int *numProductos, char recursos[100][50], int disponibles[100], int *numRecursos){
+void ingresarProductoRecursos(char productos[5][50], int cantidadesProductos[5], int *numProductos, char recursos[45][50], int disponibles[45], int *numRecursos){
     *numProductos = 0;
     *numRecursos = 0;
     char opc;
@@ -107,6 +107,7 @@ void registrarTiempoProcesos(char nombreProductos[][50],char nombreRecursos[][50
         tiempoProducto[i] = tiempo;         
     }
 }
+
 
 
 
