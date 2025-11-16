@@ -88,13 +88,27 @@ void registrarTiempoProcesos(char nombreProductos[][50],char nombreRecursos[][50
 
         int tiempo;
         do {
-            printf("Ingrese el tiempo de fabricación (minutos) del producto '%s': ",nombreProductos[i]);
+            printf("Ingrese el tiempo de fabricacion (minutos) del producto '%s': ",nombreProductos[i]);
             scanf("%d", &tiempo);          
             if (tiempo < 0) {
                 printf("El tiempo no puede ser negativo.\n");
             }
         } while (tiempo < 0);
         tiempoProducto[i] = tiempo;         
+    }
+     printf("\n====== RESUMEN DE DATOS REGISTRADOS ======\n");
+
+    for (int i = 0; i < *numProductos; i++)
+    {
+        printf("\nProducto #%d: %s\n", i + 1, nombreProductos[i]);
+
+        printf("Recursos necesarios:\n");
+        for (int j = 0; j < *numRecursos; j++)
+        {
+            printf(" %s: %d\n", nombreRecursos[j], recursosNecesarios[i][j]);
+        }
+
+        printf("Tiempo de fabricación: %d minutos\n", tiempoProducto[i]);
     }
 }
 
