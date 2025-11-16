@@ -22,7 +22,7 @@ int main()
         printf("5. Salir\n");   
         printf("Ingrese la opcion que desea: ");
         scanf(" %d", &opcionMenu);
-        while(getchar() != '\n'); // limpiar buffer
+        while(getchar() != '\n'); 
 
         switch (opcionMenu) {
             case 1:
@@ -39,7 +39,7 @@ int main()
                 
                 break;
             case 5:
-                printf("Saliendo...FIN DEL PROGRAMA\n"); 
+                printf("Salir\n"); 
                 break;
             default:
                 printf("Opcion invalida. Intente de nuevo.\n");
@@ -49,6 +49,7 @@ int main()
 
     return 0;
 }
+
 
 
 
