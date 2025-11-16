@@ -8,8 +8,8 @@ int main()
     int recursosNecesarios[5][5];
     char productos[5][50];
     int cantidadesProductos[5];      
-    char recursos[45][50];
-    int disponibles[45];             
+    char recursos[100][50];
+    int disponibles[100];             
     int numProductos = 0, numRecursos = 0;
     int opcionMenu;
 
@@ -49,6 +49,7 @@ int main()
 
     return 0;
 }
+
 
 
 
