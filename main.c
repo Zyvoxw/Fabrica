@@ -27,8 +27,8 @@ int main()
 
         switch (opcionMenu) {
             case 1:
-                
                 ingresarProductoRecursos(productos, cantidadesProductos, &numProductos, recursos, disponibles, &numRecursos);
+                registrarTiempoProcesos(productos,recursos, &numProductos,&numRecursos,recursosNecesarios,tiempo);
                 break;
             case 2:
                
@@ -50,6 +50,7 @@ int main()
 
     return 0;
 }
+
 
 
 
