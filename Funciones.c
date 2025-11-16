@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include <string.h>
+#include "Funciones.h"
 
-void ingresarProductoRecursos(char productos[5][50], int cantidadesProductos[5], int *numProductos, char recursos[100][50], int disponibles[100], int *numRecursos){
+void ingresarProductoRecursos(char productos[5][50], int cantidadesProductos[5], int *numProductos, char recursos[45][50], int disponibles[45], int *numRecursos){
     *numProductos = 0;
     *numRecursos = 0;
     char opc;
@@ -71,6 +72,40 @@ do {
 }
 
 
+void registrarTiempoProcesos(char nombreProductos[][50],char nombreRecursos[][50],int *numProductos,int *numRecursos,int recursosNecesarios[][5], int tiempoProducto[])
+{
+    printf("---- REGISTRO DE PROCESOS ----\n");
+
+    for (int i = 0; i < *numProductos; i++)
+    {
+        printf("\nProducto: %s\n", nombreProductos[i]);
+
+        for (int j = 0; j < *numRecursos; j++)
+        {
+            int cantidad;
+            do {
+                printf("Ingrese la cantidad necesaria del recurso '%s' para producirlo: \n ",nombreRecursos[j]);
+                scanf("%d", &cantidad); 
+
+                if (cantidad < 0) {
+                    printf("No se permiten valores negativos.\n");
+                }
+
+            } while (cantidad < 0); 
+            recursosNecesarios[i][j] = cantidad;  
+        }
+
+        int tiempo;
+        do {
+            printf("Ingrese el tiempo de fabricación (minutos) del producto '%s': ",nombreProductos[i]);
+            scanf("%d", &tiempo);          
+            if (tiempo < 0) {
+                printf("El tiempo no puede ser negativo.\n");
+            }
+        } while (tiempo < 0);
+        tiempoProducto[i] = tiempo;         
+    }
+}
 
 
 
