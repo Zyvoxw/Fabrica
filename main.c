@@ -4,10 +4,12 @@
 
 int main()
 {
-    char nombreProducto[5][50];
+    char Productos[5][50];
     int cantR=0;
     char nombreRecursos[10];
     int numRecursos;
+    int tiempo[5];
+    int recursosNecesarios[5][5];
     
     int opcionMenu;
     do{
@@ -23,13 +25,7 @@ int main()
         switch (opcionMenu)
         {
         case 1:
-            do{
-                printf("Ingrese el nombre del producto (1-5): ");
-                leercadena(nombreProducto,50);
-            }while ();
-        
-            printf("Ingrese el nombre del producto (1-5): ");
-
+           registrarTiempoProcesos(productos,recursos, &numProd,&numRec,recursosNecesarios,tiempo);
             
             break;
         case 2:
@@ -53,3 +49,4 @@ int main()
 
     return 0;
 }
+
