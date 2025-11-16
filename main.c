@@ -4,7 +4,6 @@
 
 int main()
 {
-    char Productos[5][50];
     int tiempo[5];
     int recursosNecesarios[5][5];
     char productos[5][50];
@@ -50,6 +49,7 @@ int main()
 
     return 0;
 }
+
 
 
 
