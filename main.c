@@ -48,30 +48,8 @@ int main()
         }
     } while (opcionMenu != 5);
 
-    printf("-----RESUMEN FINAL-----\n");
-
-    printf("------- PRODUCTOS INGRESADOS -------\n");
-    if (numProductos == 0) {
-        printf("No se ingresaron productos.\n");
-    } else {
-        for (int i = 0; i < numProductos; i++) {
-            printf("%d - %s - cantidad: %d\n", i + 1, productos[i], cantidadesProductos[i]);
-        }
-    }
-
-    printf("------- RECURSOS INGRESADOS -------\n");
-    if (numRecursos == 0) {
-        printf("No se ingresaron recursos.\n");
-    } else {
-        for (int i = 0; i < numRecursos; i++) {
-            printf("%d - %s - cantidad disponible: %d\n", i + 1, recursos[i], disponibles[i]);
-        }
-    }
-
-    printf("\nTotal de productos ingresados: %d\n", numProductos);
-    printf("Total de recursos ingresados: %d\n", numRecursos);
-
     return 0;
 }
+
 
 
