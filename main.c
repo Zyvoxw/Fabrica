@@ -23,32 +23,37 @@ int main()
         printf("Ingrese la opcion que desea: ");
         scanf(" %d", &opcionMenu);
         while(getchar() != '\n'); 
-
-        switch (opcionMenu) {
-            case 1:
-                ingresarProductoRecursos(productos, cantidadesProductos, &numProductos, recursos, disponibles, &numRecursos);
-                registrarTiempoProcesos(productos,recursos, &numProductos,&numRecursos,recursosNecesarios,tiempo);
-                break;
-            case 2:
-               
-                break;
-            case 3:
-               
-                break;
-            case 4:
-                
-                break;
-            case 5:
-                printf("Salir\n"); 
-                break;
-            default:
-                printf("Opcion invalida. Intente de nuevo.\n");
-                break;
+         switch (opcionMenu)
+        {
+        case 1:
+            ingresarProductoRecursos(productos, &numProductos, recursos, disponibles, &numRecursos);
+            
+            break;
+        case 2:
+            registrarTiempoProcesos(productos,recursos, &numProductos,&numRecursos,recursosNecesarios,tiempo);
+            break;
+        case 3:
+            
+            break;
+        case 4:
+            
+            break;
+        case 5:
+            
+            break;
+        case 6:
+            printf("Saliendo...\n"); 
+            break;
+        
+        default:
+            printf("Opcion invalida. Intente de nuevo.\n");
+            break;
         }
-    } while (opcionMenu != 5);
+    } while (opcionMenu != 6);
 
     return 0;
 }
+
 
 
 
