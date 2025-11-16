@@ -112,6 +112,86 @@ void registrarTiempoProcesos(char nombreProductos[][50],char nombreRecursos[][50
     }
 }
 
+void eliminarProductos(char nombreProductos[][50],char recursosNecesarios[][5],int tiempoProducto[],int *numProductos, int numRecursos){
+    if (*numProductos == 0) {
+        printf("No hay productos registrados.\n");
+        return;
+    }
+
+    char buscar[50];
+    printf("Nombre del producto para eliminar:\n");
+    fflush(stdin);
+    fgets(buscar, 50, stdin);
+
+    int len = strlen(buscar);
+    if (len > 0 && buscar[len - 1] == '\n')
+        buscar[len - 1] = '\0';  
+
+    int indEliminar = -1;   // índice del producto a eliminar
+
+    // ---------- BÚSQUEDA CON TU LÓGICA ----------
+    for (int i = 0; i < *numProductos; i++) {
+        int iguales = 1;
+        int j = 0;
+
+        // comparar carácter por carácter
+        while (buscar[j] != '\0' && nombreProductos[i][j] != '\0') {
+            if (buscar[j] != nombreProductos[i][j]) {
+                iguales = 0;
+                break;
+            }
+            j++;
+        }
+
+        // asegurar que las dos cadenas terminan al mismo tiempo
+        if (buscar[j] != nombreProductos[i][j]) {
+            iguales = 0;
+        }
+
+        if (iguales) {
+            indEliminar= i;
+            break;
+        }
+    }
+
+    if (indEliminar == -1) {
+        printf("Producto '%s' no encontrado.\n", buscar);
+        return;
+    }
+
+    // ---------- ELIMINAR: DESPLAZAR ARREGLOS ----------
+    for (int i = indEliminar; i < *numProductos - 1; i++) {
+
+        // mover nombre
+        int k = 0;
+        while ((nombreProductos[i][k] = nombreProductos[i + 1][k]) != '\0') {
+            k++;
+        }
+        // mover tiempo
+        tiempoProducto[i] = tiempoProducto[i + 1];
+
+        // mover recursos (toda la fila de la matriz)
+        for (int j = 0; j < numRecursos; j++) {
+            recursosNecesarios[i][j] = recursosNecesarios[i + 1][j];
+        }
+    }
+
+    (*numProductos)--;  
+
+    printf("Producto '%s' eliminado correctamente.\n", buscar);
+    printf("\n======== RESUMEN ACTUALIZADO ========\n");
+
+    for (int i = 0; i < *numProductos; i++) {
+        printf("\nProducto #%d: %s\n", i + 1, nombreProductos[i]);
+        printf("Tiempo de fabricacion: %d minutos\n", tiempoProducto[i]);
+
+        printf("Recursos necesarios:\n");
+        for (int j = 0; j < numRecursos; j++){
+            printf("  Recurso %d: %d\n", j + 1, recursosNecesarios[i][j]);
+        }
+    }
+}
+
 
 
 
