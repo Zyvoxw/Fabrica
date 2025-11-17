@@ -1,6 +1,9 @@
-#pragma once
+void leerCadena(char *cadena, int tam);
 
-void ingresarProductoRecursos(char productos[5][50], int *numProductos, char recursos[45][50], int disponibles[45], int *numRecursos);
-void registrarTiempoProcesos(char nombreProductos[][50],char nombreRecursos[][50],int *numProductos,int *numRecursos,int recursosNecesarios[][5], int tiempoProducto[]);
+void ingresoProductos(char productos[][30],int pantallas[], int chips[],int tarjetas[], int sensores[],int tiempo[],int indice);
 
+void imprimirProductos(char productos[][30],int pantallas[],int chips[],int tarjetas[],int sensores[],int tiempo[],int cont);
 
+int leerIndiceValido(int cont);
+void eliminarProducto(char productos[][30],int pantallas[],int tarjetas[],int chips[],int sensores[],int tiempo[],int *cont);
+void calculoRecursos(int componente[], int indice, int cantidad, int stock, char texto[]);
